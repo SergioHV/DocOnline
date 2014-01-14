@@ -1,8 +1,8 @@
-package org.isft.logic;
+package org.doconline.logic;
 
 import java.sql.Connection;
 import java.util.HashMap;
-import org.isft.jdbc.DataBase;
+import org.doconline.jdbc.DataBase;
 
 public class LogicManager {
     private DataBase db=null;

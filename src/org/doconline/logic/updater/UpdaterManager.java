@@ -1,10 +1,10 @@
-package org.isft.logic.updater;
+package org.doconline.logic.updater;
 
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
-import org.isft.logic.LogicManager;
+import org.doconline.logic.LogicManager;
 
 /**
  *

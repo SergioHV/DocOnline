@@ -1,4 +1,4 @@
-package org.isft.jdbc;
+package org.doconline.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

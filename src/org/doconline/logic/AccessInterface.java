@@ -1,4 +1,4 @@
-package org.isft.logic;
+package org.doconline.logic;
 
 import java.util.HashMap;
 import java.util.Vector;
