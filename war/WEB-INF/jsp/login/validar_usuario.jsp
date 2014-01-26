@@ -27,6 +27,6 @@
             //CREAR SESION
             request.getSession(false).setAttribute("empleado", empleado);
         }
-        %><script>window.location.href = 'modulo.go?codPage=3000';</script><%
+        %><script>window.location.href = 'modulo.go?codPage=1000';</script><%
     }
 %>

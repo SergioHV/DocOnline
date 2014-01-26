@@ -4,9 +4,13 @@
  */
 package org.doconline.logic.updater;
 
+import com.google.api.services.drive.model.ParentReference;
 import com.google.gdata.client.docs.DocsService;
 import com.google.gdata.data.Person;
 import com.google.gdata.data.PlainTextConstruct;
+import com.google.gdata.data.acl.AclEntry;
+import com.google.gdata.data.acl.AclRole;
+import com.google.gdata.data.acl.AclScope;
 import com.google.gdata.data.docs.DocumentEntry;
 import com.google.gdata.data.docs.DocumentListEntry;
 import com.google.gdata.data.docs.DocumentListFeed;
@@ -23,30 +27,57 @@ import java.util.Iterator;
  * @author Administrador
  */
 public class ManejadorArchivo {
+   
     
-    public void subirArchivo() throws AuthenticationException, MalformedURLException, IOException, ServiceException{
+    public void subirArchivo(File archivo, String carpeta_cbo) throws AuthenticationException, MalformedURLException, IOException, ServiceException{
         DocsService client = new DocsService("testappv3");
         client.setUserCredentials("isftwebapp@gmail.com", "nomeadivinas");
-        File file = new File("c:/test.txt");
-        URL url = new URL("https://docs.google.com/feeds/default/private/full/");
-        String mimeType = DocumentListEntry.MediaType.fromFileName(file.getName()).getMimeType();
+        URL url ;
+        if(carpeta_cbo!=null&&!carpeta_cbo.equals("")){
+            client.setProtocolVersion(DocsService.Versions.V2);
+            ManejadorCarpeta mc=new ManejadorCarpeta();
+            DocumentListEntry carpeta= mc.buscarCarpeta(carpeta_cbo);
+            url=new URL("https://docs.google.com/feeds/folders/private/full/" + carpeta.getResourceId());
+        }else{            
+            url = new URL("https://docs.google.com/feeds/default/private/full/");
+        }
+        String mimeType = DocumentListEntry.MediaType.fromFileName(archivo.getName()).getMimeType();
         DocumentEntry newDocument = new DocumentEntry();
-        newDocument.setTitle(new PlainTextConstruct("test"));
-        newDocument.setFile(file, mimeType);
-        newDocument = client.insert(url, newDocument);
+        // SE HACE UN REPLACE YA QUE NO SE PUEDE HACER UN SPLIT POR "." 
+        String aux1=archivo.getName().replace(".", "-");
+        String[] aux2=aux1.split("-");
+        String nombre_archivo=aux2[0];
+        newDocument.setTitle(new PlainTextConstruct(nombre_archivo));
+        newDocument.setFile(archivo, mimeType);
+        System.out.println(url);
+        client.insert(url, newDocument);
     }
     
     public void borrarArchivo(String nombre) throws IOException, ServiceException{
         if(buscarArchivo(nombre)==null){
             System.out.println("No se encontro el archivo");
         }else{
-           DocumentListEntry archivo=buscarArchivo("test");
+           DocumentListEntry archivo=buscarArchivo(nombre);
            archivo.delete();
         }
     }
     
+    public void agregarPermiso(String email, DocumentListEntry file) throws AuthenticationException, MalformedURLException, IOException, ServiceException{
+        DocsService client = new DocsService("yourCo-yourAppName-v1");
+        client.setProtocolVersion(DocsService.Versions.V2);
+        client.setUserCredentials("isftwebapp@gmail.com", "nomeadivinas");
+       
+        AclRole role = new AclRole("writer");
+        AclScope scope = new AclScope(AclScope.Type.USER, email);
+        AclEntry entry = new AclEntry();
+        entry.setRole(role);
+        entry.setScope(scope);
+        URL url = new URL("https://docs.google.com/feeds/acl/private/full/" + file.getResourceId());
+        client.insert(url, entry);
+    }
+    
     public void actualizarArchivo(DocumentListEntry archivo) throws IOException, ServiceException{
-        
+        // ESTE NO LO PROBE AUN PERO CAPAS SIRVA DPS
         
         DocsService client = new DocsService("testappv3");
         client.getRequestFactory().setHeader("If-Match", "*");

@@ -1,8 +1,8 @@
 function goPage(page){
-$("#div_screen").load("encabezado.go?codPage="+page+"#miancla");
+$("#cuerpo_pagina").load("encabezado.go?codPage="+page+"#miancla");
 }
 function goPageNoLogin(page){
-$("#div_screen").load("encabezado.login?codPage="+page+"#miancla");
+$("#cuerpo_pagina").load("encabezado.login?codPage="+page+"#miancla");
 }
 $( document ).ready(function() {
     console.log( "ready!" );

@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class DataBase {
-    private org.isft.domain.DataBase dataBaseDomain=null;
+    private org.doconline.domain.DataBase dataBaseDomain=null;
     private Connection cn=null;
 
     public DataBase(HashMap parameters) throws Exception{
-        dataBaseDomain=new org.isft.domain.DataBase(parameters);
+        dataBaseDomain=new org.doconline.domain.DataBase(parameters);
         try{
             if(dataBaseDomain.getMotor().equals("access")){
                access_connect();

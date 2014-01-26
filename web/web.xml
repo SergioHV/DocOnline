@@ -38,4 +38,41 @@
 	</servlet-mapping>
 <!--  FIN SERVLET REDIRECCION DEL LOGIN-->
 
+<!-- SERVLET DE ARCHIVO -->
+<servlet>    
+	 <servlet-name>ControladorArchivo</servlet-name>  
+	 <servlet-class>org.doconline.web.servlets.ControladorArchivo</servlet-class>
+</servlet> 
+<servlet-mapping>  
+ 	 <servlet-name>ControladorArchivo</servlet-name>
+ 	 <url-pattern>*.archivo</url-pattern> 
+</servlet-mapping>
+<!-- FIN DE SERVLET DE ARCHIVO -->
+
+<welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+<!-- SERVLET DE CARPETA-->
+<servlet>    
+	 <servlet-name>ControladorCarpeta</servlet-name>  
+	 <servlet-class>org.doconline.web.servlets.ControladorCarpeta</servlet-class>
+</servlet> 
+<servlet-mapping>  
+ 	 <servlet-name>ControladorCarpeta</servlet-name>
+ 	 <url-pattern>*.carpeta</url-pattern> 
+</servlet-mapping>
+<!-- FIN DE SERVLET DE CARPETA-->
+
+<!-- SERVLET DE EMPLEADO-->
+<servlet>    
+	 <servlet-name>ControladorEmpleado</servlet-name>  
+	 <servlet-class>org.doconline.web.servlets.ControladorEmpleado</servlet-class>
+</servlet> 
+<servlet-mapping>  
+ 	 <servlet-name>ControladorEmpleado</servlet-name>
+ 	 <url-pattern>*.empleado</url-pattern> 
+</servlet-mapping>
+<!-- FIN DE SERVLET DE EMPLEADO-->
+
 </web-app>

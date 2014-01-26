@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.isft.logic.updater;
+package org.doconline.logic.updater;
 
 import java.util.HashMap;
 

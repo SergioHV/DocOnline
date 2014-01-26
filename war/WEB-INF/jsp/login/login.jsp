@@ -1,4 +1,8 @@
-<h3 align="center">Bienvenido al sistema de documentacion online</h3>
+
+<%if(request.getSession(false).getAttribute("empleado")!=null){
+                    %><h3 align="center">Bienvenido al sistema de documentacion online</h3><br><br><%
+               }else{
+%>
 <br>
 <br>
 <form action="redirec.login?codPage=3002" name="form_login" id="form_login" method="post">
@@ -30,3 +34,4 @@
         </tbody>
     </table>
 </form>
+<%}%> 
