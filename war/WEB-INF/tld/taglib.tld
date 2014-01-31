@@ -67,17 +67,41 @@
       <type>String</type>
     </attribute>   
    </tag>
-<!--*TagGrillaEquivalencias-->
 <tag>
-    <name>GrillaEquivalencias</name>
-    <tag-class>org.isft.web.tags.TagGrillaEquivalencias</tag-class>
+    <name>Grilla</name>
+    <tag-class>org.doconline.web.tags.TagGrilla</tag-class>
     <body-content>empty</body-content>
     <description>Tag with Parameter</description>
     <attribute>
-      <name>cod_carrera</name>
+      <name>nombreGrilla</name>
       <required>true</required>
       <rtexprvalue>true</rtexprvalue>
     </attribute>
 </tag>
-/* adm */
+<tag>
+    <name>GrillaEmpleados</name>
+    <tag-class>org.doconline.web.tags.GrillaEmpleados</tag-class>
+    <body-content>empty</body-content>
+    <description>Tag with Parameter</description>
+    <attribute>
+      <name>nombreGrilla</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>nombreEmpleado</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>apellidoEmpleado</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>dniEmpleado</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+</tag>
 </taglib>

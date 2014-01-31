@@ -33,7 +33,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Empleado<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                           <li><a href="javascript:goPage(7000)">Alta</a></li>
-                          <li><a href="#">Baja</a></li>
+                          <li><a href="javascript:goPage(7001)">Baja</a></li>
                           <li><a href="#">Modificacion</a></li>
                           <li><a href="#">Consulta</a></li>
                         </ul>

@@ -63,8 +63,10 @@ public class AbmEmpleado extends UpdaterManager implements UpdaterInterface{
         
     }
 
-    public void delete(HashMap parameters) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(HashMap hm) throws Exception {
+        String sql_delete="delete from empleado where dni='"+hm.get("txt_dni")+"'";
+        System.out.println("Consulta DELETE a ejecutar: " + sql_delete);
+        execute(sql_delete);
     }
 
     public void update(HashMap parameters) throws Exception {

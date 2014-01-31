@@ -50,7 +50,12 @@ public class ManejadorArchivo {
         newDocument.setTitle(new PlainTextConstruct(nombre_archivo));
         newDocument.setFile(archivo, mimeType);
         System.out.println(url);
-        client.insert(url, newDocument);
+        try{
+            client.insert(url, newDocument);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
     }
     
     public void borrarArchivo(String nombre) throws IOException, ServiceException{

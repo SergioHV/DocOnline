@@ -60,8 +60,8 @@ public class ControladorEmpleado extends HttpServlet{
         
         // INICIO DE ACCIONES SEGUN LO PEDIDO
         AbmEmpleado abm_emp=new AbmEmpleado();
-        if(accion.equals("alta")){
-            try {
+        try {
+            if(accion.equals("alta")){
                 ValidarEmpresa ve=new ValidarEmpresa();
                 String mensaje=ve.existeEmpresa(cbo_empresas);
                 if(mensaje.equals("")){
@@ -70,11 +70,13 @@ public class ControladorEmpleado extends HttpServlet{
                         System.out.println("El mensaje es:" + mensaje);
                         response.getWriter().write("ERROR:"+mensaje);
                         return;
-                }
-               
-            } catch (Exception ex) {
-                Logger.getLogger(ControladorEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+                }     
+            } 
+            if(accion.equals("baja")){
+                    abm_emp.delete(hm);
             }
-        } 
-  }
+        } catch (Exception ex) {
+            System.out.println("Error al realizar accion de controlador empleado");
+        }
+    }
 }

@@ -24,9 +24,9 @@ public class ComboCarpetas extends TagCombo {
     public int doStartTag() throws JspException {
                 super.doStartTag();
                 Vector<String> vec_carp=new Vector();
-		CollectionCarpetas examenes = new CollectionCarpetas();
+		CollectionCarpetas carpetas = new CollectionCarpetas();
 		try {
-                    vec_carp = examenes.getCarpetas();
+                    vec_carp = carpetas.getCarpetas();
                     for(int i=0; i< vec_carp.size();i++){
                         nombre_carpeta=vec_carp.elementAt(i).toString();
                         pageContext.getOut().println("<OPTION VALUE='"+nombre_carpeta+"'>" + nombre_carpeta + "</OPTION>");
